@@ -1,12 +1,12 @@
 <script setup>
 import WelcomeItem from './WelcomeItem.vue'
-import { traduz } from '../post.mjs'
+import axios from 'axios'
 </script>
 
 <template>
   <div>
     <div>
-      <button v-on:click="sendPost('Batata')">Traduzir</button>
+      <button v-on:click="sendPost(cardapio)">Traduzir</button>
     </div>
     <div v-for="cardapio in cardapios" :key="cardapio.categoria">
       <p>{{cardapio.categoria}}</p>
@@ -50,14 +50,15 @@ export default {
   },
   methods: {
 
-    sendPost(palavras) {
-      let obj = {
-        q: palavras,
-        target: "us",
-      }
-      saveText( JSON.stringify(obj), "request.json" );
-      const valorTraduzido =  traduz()
-      console.log('traducao: ', valorTraduzido)
+    sendPost(cardapio) {
+      let key = '8226e86d-c253-0bea-94a1-d12e4e3b828c:fx'
+      axios.post(
+        `https://api-free.deepl.com/v2/translate?auth_key=${key}&text=Hello, world&target_lang=DE`
+        ).then(response => console.log(response))
+      // axios.get(
+      //   `http://localhost:3000/local/user/3078`
+      // ).then(response => console.log(response.data))
+      
     }
   }
 };
