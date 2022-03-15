@@ -6,7 +6,7 @@ import axios from 'axios'
 <template>
   <div>
     <div>
-      <button v-on:click="sendPost(cardapio)">Traduzir</button>
+      <button v-on:click="sendPost(cardapios)">Traduzir</button>
     </div>
     <div v-for="cardapio in cardapios" :key="cardapio.categoria">
       <p>{{cardapio.categoria}}</p>
@@ -19,12 +19,6 @@ import axios from 'axios'
 </template>
 
 <script>
-function saveText(text, filename){
-    var a = document.createElement('a');
-    a.setAttribute('href', 'data:text/plain;charset=utf-8,'+encodeURIComponent(text));
-    a.setAttribute('download', filename);
-    a.click()
-    }
 
 export default {
   data() {
@@ -52,9 +46,20 @@ export default {
 
     sendPost(cardapio) {
       let key = '8226e86d-c253-0bea-94a1-d12e4e3b828c:fx'
-      axios.post(
-        `https://api-free.deepl.com/v2/translate?auth_key=${key}&text=Hello, world&target_lang=DE`
-        ).then(response => console.log(response))
+      let texto = ''
+
+      cardapio.map((item)=>{
+        let texto2= `&text=${item.categoria}`
+        texto = texto + texto2
+      })
+
+      console.log(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=DE`)
+
+      // axios
+      // .post(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=DE`)
+      // .then(response => console.log(response))
+      
+      
       // axios.get(
       //   `http://localhost:3000/local/user/3078`
       // ).then(response => console.log(response.data))
