@@ -49,11 +49,11 @@ export default {
       let texto = ''
 
       cardapio.map((item)=>{
-        let texto2= `&text=${item.categoria}`
+        let texto2= `&text=${item.categoria} ${item.produto} ${item.descricao}.`
         texto = texto + texto2
       })
 
-      console.log(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=DE`)
+      console.log(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=US`)
 
       // axios
       // .post(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=DE`)
