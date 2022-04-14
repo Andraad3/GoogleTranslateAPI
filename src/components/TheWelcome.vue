@@ -53,10 +53,10 @@ export default {
         texto = texto + texto2
       })
 
-      console.log(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=US`)
+      console.log(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=EN`)
 
       axios
-      .post(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=DE`)
+      .post(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=EN`)
       .then(response => console.log(response))
       
       
