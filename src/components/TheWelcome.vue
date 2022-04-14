@@ -45,7 +45,7 @@ export default {
   methods: {
 
     sendPost(cardapio) {
-      let key = '8226e86d-c253-0bea-94a1-d12e4e3b828c:fx'
+      let key = '34019a6e-6749-ef74-b468-ab32081bddeb:fx'
       let texto = ''
 
       cardapio.map((item)=>{
@@ -55,9 +55,9 @@ export default {
 
       console.log(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=US`)
 
-      // axios
-      // .post(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=DE`)
-      // .then(response => console.log(response))
+      axios
+      .post(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=DE`)
+      .then(response => console.log(response))
       
       
       // axios.get(
