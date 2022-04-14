@@ -46,17 +46,23 @@ export default {
 
     sendPost(cardapio) {
       let key = '34019a6e-6749-ef74-b468-ab32081bddeb:fx'
-      let texto = ''
+      let textoCategoria = ''
+      let textoProduto = ''
+      let textoDescricao = ''
 
       cardapio.map((item)=>{
-        let texto2= `&text=${item.categoria} ${item.produto} ${item.descricao}.`
-        texto = texto + texto2
+        let textoCategoria2= `&text=${item.categoria}`
+        let textoProduto2= `&text=${item.produto}`
+        let textoDescricao2= `&text=${item.descricao}`
+        textoCategoria = textoCategoria + textoCategoria2
+        textoProduto = textoProduto + textoProduto2
+        textoDescricao = textoDescricao + textoDescricao2
       })
 
-      console.log(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=EN`)
+      console.log(`https://api-free.deepl.com/v2/translate?auth_key=${key}${textoCategoria}${textoDescricao}${textoProduto}&target_lang=EN`)
 
       axios
-      .post(`https://api-free.deepl.com/v2/translate?auth_key=${key}${texto}, world&target_lang=EN`)
+      .post(`https://api-free.deepl.com/v2/translate?auth_key=${key}${textoCategoria}${textoDescricao}${textoProduto}source_lang=PT&target_lang=EN`)
       .then(response => console.log(response))
       
       
